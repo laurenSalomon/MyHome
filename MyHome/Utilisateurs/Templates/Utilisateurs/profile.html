@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div style="display: none;">
+    <h1>Information du profil</h1>
+    <p>Nom d'utilisateur: {{ request.user.username}}</p>
+    <p>Noms: {{ request.user.first_name}}</p>
+    <p>prenoms: {{ request.user.last_name}}</p>
+    <p>numero: {{ request.user.profile.numero}}</p>
+
+    {% if is_agence %}
+    <p>nom de l'organisation: {{ request.user.agenceprofil.nom_entreprise }}</p>
+    {% endif %}
+
+    
+        <a href="">Mise à jour </a>
+        <form action="" method="POST">
+            {% csrf_token %}
+            {{update}}
+            {{ prost }}
+            <input type="submit" value="MAJ">
+        </form>
+    </div>
+    <button id="mise">Mise à jour </button>
+    <div id="x">X</div>
+    <div class="contral" style="display: none;">
+            <b>Bonjour</b>
+    </div>
+  
+    <script>
+        let central= document.querySelector('.contral');
+        console.log(central);
+        let changement =document.getElementById('mise');
+        changement.addEventListener('click',()=>{
+            console.log("Boom");
+            central.style.display="block";
+
+        });
+     let parent =document.getElementById('x');
+     parent.addEventListener('click',()=>{
+            console.log("Bodddom");
+            central.style.display="none";
+
+        })
+
+    </script>
+
+</body>
+</html>
